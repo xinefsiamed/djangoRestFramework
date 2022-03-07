@@ -8,6 +8,8 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
+
+Token 243804ceab03821f35eb869cacf72d3655df9d36
 """
 
 from pathlib import Path
@@ -40,6 +42,7 @@ INSTALLED_APPS = [
 
     'django_filters',
     'rest_framework',
+    'rest_framework.authtoken',
 
     'cursos',
 ]
@@ -130,10 +133,12 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# drf
+# django rest_framework
+
 REST_FRAMEWORK = {
-    'DEFAULT_ATHENTICATION_CLASSES': (
-        'rest_framework.authentication.SessionAuthentication',
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        # 'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
     ),
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticatedOrReadOnly',
